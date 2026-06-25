@@ -1,7 +1,12 @@
 .claude/settings.local.json
 .mcp.json
 .continuity/
-/target
+.venv/
 __pycache__/
 *.pyc
-.venv/
+*.egg-info/
+/build
+/dist
+# Generated index artifacts — keep the dir, not its contents.
+output/*
+!output/.gitkeep
