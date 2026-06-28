@@ -6,12 +6,15 @@
 
 ## Current state
 
-**`main` pushed through `6647ad2`.** Slice 1 shipped at `229a503`; Slice 1b
-(Edition) at `6647ad2`. The first Edition of the predicate-witness specimen corpus
-is committed under `editions/` (`sha256:fabb36a4…`, pinned in
-`tests/test_edition_packaging.py`). **An Edition freezes what was *found*, not what
+**`main` pushed through `3ccc5cd`.** Slice 1 shipped at `229a503`; Slice 1b
+(Edition) at `6647ad2`; Slice 1c (corpus expansion) at `3ccc5cd`. Two Editions of
+the specimen corpus are committed under `editions/` (Edition 1 `sha256:fabb36a4…`
+pinned in `tests/test_edition_packaging.py`; Edition 2 `sha256:b94f0442…` over the
+heterogeneous `mixed_status_corpus`). **An Edition freezes what was *found*, not what
 was *true* — it is a receipt for packaging, never a witness for legitimacy.**
-Next campaign: corpus expansion (Slice 1c). Continuity source remains deferred.
+Next campaign: replace `provisional_git_manifest_v0` with a Continuity source —
+deferred until there is a real interface to replace. Continuity source remains the
+final destination.
 
 Spine is a **read plane** over a *declared provisional git manifest*. It:
 
