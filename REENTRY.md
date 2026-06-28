@@ -6,7 +6,11 @@
 
 ## Current state
 
-Slice 1 shipped at **`229a503`**.
+Slice 1 shipped at **`229a503`**. Slice 1b (Edition) shipped next: an immutable,
+content-addressed snapshot of a render. The first Edition of the predicate-witness
+specimen corpus is committed under `editions/` (`sha256:fabb36a4…`, pinned in
+`tests/test_edition_packaging.py`). **An Edition freezes what was *found*, not what
+was *true* — it is a receipt for packaging, never a witness for legitimacy.**
 
 Spine is a **read plane** over a *declared provisional git manifest*. It:
 
@@ -33,12 +37,14 @@ Spine-reads-from-Continuity; the git manifest is a specimen, not a destination.
 
 ## Next valid work (in order; see `docs/campaigns/`)
 
-1. **Slice 1b — Edition:** an immutable, content-addressed snapshot of a render
-   (manifest + index + output digests + provenance). *Freezes navigation, not
-   authority.*
-2. **First edition** of the tiny predicate-witness specimen corpus.
-3. **Expand the declared corpus** — only *after* an Edition exists (otherwise
-   "richer corpus" becomes the scatter trap).
+1. ~~**Slice 1b — Edition:**~~ **DONE.** Immutable, content-addressed snapshot of a
+   render (manifest + index + render digests + provenance). Freezes navigation,
+   not authority. `spine edition create … --created-at … --out …`.
+2. ~~**First edition** of the predicate-witness specimen corpus.~~ **DONE** —
+   committed under `editions/`.
+3. **Expand the declared corpus** — now *unblocked* (an Edition exists). Add
+   declared, concrete references to the manifest; re-mint an Edition to freeze the
+   richer corpus. This is the next live surface.
 4. **Replace `provisional_git_manifest_v0` with a Continuity source** — only once
    there's a real interface to replace (one manifest, one index, one edition, one
    corpus-expansion pain point) instead of plumbing on a hunch.

@@ -101,9 +101,33 @@ class MalformedManifestError(SpineRefusal):
     fails clean and loud."""
 
 
+class EditionExistsError(SpineRefusal):
+    """The target edition directory already exists. An Edition is immutable: it
+    freezes what was *found* and is never overwritten in place. Re-running into
+    an occupied edition directory is a refusal, not a silent clobber — the
+    no-overwrite rule is the point, so it fails loud."""
+
+
 # --------------------------------------------------------------------------- #
 # The wall, as a pure check. Raises a typed SpineRefusal or returns None.
 # --------------------------------------------------------------------------- #
+
+
+def check_spine_assertions(spine_assertions: Iterable[str]) -> None:
+    """The wall, isolated: Spine may assert only ``located`` / ``rendered``.
+
+    Shared by the index-entry path (:func:`check_entry_admissible`) and the
+    Edition path (:func:`spine.edition.build_edition`) so the *package* layer
+    cannot launder a legitimacy verb either. Freezing a render adds immutability,
+    never authority."""
+    illegal = [a for a in spine_assertions if a not in SPINE_ASSERTIONS]
+    if illegal:
+        # Name the legitimacy verb explicitly when that's what was attempted.
+        raise SpineBearsStatusError(
+            f"spine_assertions may contain only {sorted(SPINE_ASSERTIONS)}; "
+            f"Spine may not assert {illegal!r} "
+            f"(findability is not legitimacy)"
+        )
 
 
 def check_entry_admissible(
@@ -133,15 +157,7 @@ def check_entry_admissible(
     if not canonical_location or not canonical_location.strip():
         raise SpineRefusal("canonical_location is required")
 
-    assertions = tuple(spine_assertions)
-    illegal = [a for a in assertions if a not in SPINE_ASSERTIONS]
-    if illegal:
-        # Name the legitimacy verb explicitly when that's what was attempted.
-        raise SpineBearsStatusError(
-            f"spine_assertions may contain only {sorted(SPINE_ASSERTIONS)}; "
-            f"Spine may not assert {illegal!r} "
-            f"(findability is not legitimacy)"
-        )
+    check_spine_assertions(spine_assertions)
 
     if reported_status not in REPORTED_STATUSES:
         raise UnknownStatusError(

@@ -1,0 +1,90 @@
+{
+  "ingress_adapter": "provisional_git_manifest_v0",
+  "observed_at": "2026-06-25T00:00:00Z",
+  "entries": [
+    {
+      "canonical_location": "agent_gov:docs/cross-tool/predicate-witness-infrastructure-note.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status (canonical capture)",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-25T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "continuity:docs/candidates/PREDICATE_WITNESS_POINTER.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-25T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "linearaccountant:docs/working/predicate-legitimacy-not-from-proof-candidate.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-25T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "nq:docs/working/decisions/PREDICATE_WITNESS_POINTER_CANDIDATE.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-25T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "spine:docs/predicate-witness-index-candidate.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-25T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "standing:docs/predicate-no-authority-from-satisfaction-candidate.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-25T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "wicket:docs/predicate-admissibility-candidate.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-25T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    }
+  ]
+}

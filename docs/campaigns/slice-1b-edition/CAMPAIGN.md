@@ -1,7 +1,26 @@
 # Campaign — Spine Slice 1b: an Edition freezes navigation, not authority
 
-Status: **carded, pre-code** (2026-06-25). A bounded follow-on to Slice 1, not
-Slice 2. Still read-plane. Still no authority. Card before code.
+Status: **SHIPPED** (2026-06-27; carded 2026-06-25). A bounded follow-on to
+Slice 1, not Slice 2. Still read-plane. Still no authority.
+
+## Exit ticket (2026-06-27)
+
+All five exit criteria met. `spine edition create <manifest> --created-at <iso>
+--out <dir>` ships in `src/spine/edition.py` + `cli.py`; the first Edition of the
+specimen corpus is committed under `editions/` (`sha256:fabb36a4…`). 66 tests pass
+(`tests/test_edition_packaging.py`, 40 new).
+
+The wall held at the package layer: an Edition asserts only `located` / `rendered`,
+its `edition_id` excludes provenance (same located content + time → same citation
+target), and re-mint refuses rather than overwrites. After an adversarial review
+pass, five hardenings landed inside the committed boundary (not new scope): a
+model-level assertions validator (wall holds off the blessed path), single-read
+manifest binding, canonical (order/dupe-invariant) assertions in the id, a
+`sha256:`-shape guard on the directory key (no path traversal), and an atomic
+temp+rename write (no half-written "immutable" target). Forbidden list untouched —
+no crawler, no resolver, no witness synthesis, no authority language.
+
+Next live surface: REENTRY item #3, expand the declared corpus.
 
 ## The one line
 

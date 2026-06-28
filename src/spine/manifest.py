@@ -70,14 +70,20 @@ def _check_no_crawl(path: str) -> None:
         )
 
 
-def load_manifest(path: str | Path) -> Manifest:
+def load_manifest(path: str | Path, *, content: str | None = None) -> Manifest:
     """Load and validate a YAML manifest. No discovery, no filesystem walk.
 
     Every failure is a typed ``SpineRefusal``: a structurally-invalid manifest →
     ``MalformedManifestError``; an unknown adapter → ``UnknownIngressError``; a
     crawl-shaped artifact path → ``CrawlAttemptError``.
+
+    ``content`` lets a caller supply the already-read manifest text so the bytes
+    that produced the index are the *same* bytes that get digested/frozen (the
+    Edition path reads once and passes it here — no second read that could see a
+    changed file).
     """
-    raw = yaml.safe_load(Path(path).read_text())
+    text = content if content is not None else Path(path).read_text()
+    raw = yaml.safe_load(text)
     if not isinstance(raw, dict):
         raise MalformedManifestError("manifest must be a mapping")
     try:

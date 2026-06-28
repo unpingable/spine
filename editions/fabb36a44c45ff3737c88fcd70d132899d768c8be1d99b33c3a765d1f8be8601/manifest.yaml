@@ -1,0 +1,55 @@
+# The first Spine corpus: the predicate-witness / admissibility doctrine family,
+# scattered by hand across the constellation on 2026-06-25 — the symptom that
+# justified a read plane. Every artifact here is self-declared candidate /
+# non-binding and UNWITNESSED; the index must show exactly that, never promote
+# one by the act of indexing it.
+#
+# status_source_ref points at where each artifact declares its own status (its
+# own header Status line — a weak, self-reported source, faithfully quoted).
+# witness_ref is null everywhere: this whole family is awaiting a witness, and
+# the read plane's job is to make that absence legible, not paper over it.
+
+adapter: provisional_git_manifest_v0
+
+artifacts:
+  - repo: agent_gov
+    path: docs/cross-tool/predicate-witness-infrastructure-note.md
+    reported_status: candidate
+    status_source_ref: "self:header Status (canonical capture)"
+    witness_ref: null
+
+  - repo: nq
+    path: docs/working/decisions/PREDICATE_WITNESS_POINTER_CANDIDATE.md
+    reported_status: candidate
+    status_source_ref: "self:header Status"
+    witness_ref: null
+
+  - repo: wicket
+    path: docs/predicate-admissibility-candidate.md
+    reported_status: candidate
+    status_source_ref: "self:header Status"
+    witness_ref: null
+
+  - repo: standing
+    path: docs/predicate-no-authority-from-satisfaction-candidate.md
+    reported_status: candidate
+    status_source_ref: "self:header Status"
+    witness_ref: null
+
+  - repo: continuity
+    path: docs/candidates/PREDICATE_WITNESS_POINTER.md
+    reported_status: candidate
+    status_source_ref: "self:header Status"
+    witness_ref: null
+
+  - repo: linearaccountant
+    path: docs/working/predicate-legitimacy-not-from-proof-candidate.md
+    reported_status: candidate
+    status_source_ref: "self:header Status"
+    witness_ref: null
+
+  - repo: spine
+    path: docs/predicate-witness-index-candidate.md
+    reported_status: candidate
+    status_source_ref: "self:header Status"
+    witness_ref: null
