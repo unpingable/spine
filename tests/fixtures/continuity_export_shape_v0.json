@@ -1,0 +1,96 @@
+[
+  {
+    "envelope": "continuity.receipt.v0",
+    "receipt_id": "rcpt_0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "receipt_type": "memory.commit",
+    "hash": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "prev_hash": null,
+    "timestamp": "2026-06-28T12:00:00Z",
+    "payload": {
+      "memory_id": "mem_11111111111111111111111111111111",
+      "scope": "spine",
+      "kind": "decision",
+      "basis": "operator_assertion",
+      "status": "committed",
+      "reliance_class": "advisory",
+      "confidence": 0.8,
+      "content": {
+        "repo": "spine",
+        "path": "DOCTRINE.md",
+        "summary": "the read-plane charter"
+      },
+      "source_refs": [
+        {"ref": "session:2026-06-25", "kind": "operator", "note": "declared in re-entry"}
+      ],
+      "created_at": "2026-06-25T00:00:00Z",
+      "updated_at": "2026-06-28T12:00:00Z",
+      "expires_at": null,
+      "supersedes": null,
+      "revoked_by": null,
+      "created_by": null,
+      "approved_by": null
+    }
+  },
+  {
+    "envelope": "continuity.receipt.v0",
+    "receipt_id": "rcpt_1b2c3d4e5f60718293a4b5c6d7e8f9a0",
+    "receipt_type": "memory.observe",
+    "hash": "84a516841ba77a5b4648de2cd0dfcb30ea46dbb4",
+    "prev_hash": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "timestamp": "2026-06-28T12:01:00Z",
+    "payload": {
+      "memory_id": "mem_22222222222222222222222222222222",
+      "scope": "agent_gov",
+      "kind": "note",
+      "basis": "inference",
+      "status": "observed",
+      "reliance_class": "retrieve_only",
+      "confidence": 0.4,
+      "content": {
+        "repo": "agent_gov",
+        "path": "docs/doctrine/weak_property_strong_property.md",
+        "summary": "a doctrine note"
+      },
+      "source_refs": [],
+      "created_at": "2026-06-26T00:00:00Z",
+      "updated_at": "2026-06-28T12:01:00Z",
+      "expires_at": null,
+      "supersedes": null,
+      "revoked_by": null,
+      "created_by": null,
+      "approved_by": null
+    }
+  },
+  {
+    "envelope": "continuity.receipt.v0",
+    "receipt_id": "rcpt_2c3d4e5f60718293a4b5c6d7e8f9a0b1",
+    "receipt_type": "memory.commit",
+    "hash": "3c9909afec25354d551dae21590bb26e38d53f21",
+    "prev_hash": "84a516841ba77a5b4648de2cd0dfcb30ea46dbb4",
+    "timestamp": "2026-06-28T12:02:00Z",
+    "payload": {
+      "memory_id": "mem_33333333333333333333333333333333",
+      "scope": "continuity",
+      "kind": "decision",
+      "basis": "synthesis",
+      "status": "committed",
+      "reliance_class": "actionable",
+      "confidence": 0.9,
+      "content": {
+        "repo": "continuity",
+        "path": "docs/candidates/PROJECTION_RECEIPT.md",
+        "summary": "projection receipt candidate"
+      },
+      "source_refs": [
+        {"ref": "mem_00000000000000000000000000000000", "kind": "memory", "note": "prior draft"}
+      ],
+      "created_at": "2026-06-27T00:00:00Z",
+      "updated_at": "2026-06-28T12:02:00Z",
+      "expires_at": null,
+      "supersedes": "mem_00000000000000000000000000000000",
+      "revoked_by": null,
+      "created_by": null,
+      "approved_by": null
+    }
+  }
+]

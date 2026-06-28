@@ -78,12 +78,18 @@ Spine-reads-from-Continuity; the git manifest is a specimen, not a destination.
      declaring a witnessless `ratified` ref is still refused at index-build — a
      source declares candidates for location, it confers no standing.
      `docs/campaigns/slice-2a-declaration-source/CAMPAIGN.md`.
-   - **Slice 2b — Continuity-shaped static fixture** — **NEXT.** A static export
-     fixture, *not* live Continuity: prove Spine consumes a Continuity-shaped
-     declaration without needing Continuity (tests stay environment-free, no séance
-     rituals).
-   - **Slice 2c — real Continuity adapter.** Forcing case for a content-based
-     `build_edition` (a real export has no file path — see the 2a known-seam note).
+   - ~~**Slice 2b — Continuity-shaped static fixture.**~~ **DONE.**
+     `tests/fixtures/continuity_export_shape_v0.json` (grounded on real Continuity's
+     `continuity.receipt.v0` + `MemoryObject` shape, @ `aab46ec`) +
+     `src/spine/continuity_fixture.py` (`ContinuityExportFixtureSource`). Continuity
+     declares LOCATION, not STATUS: every ref lands `unknown`, the lifecycle
+     (status/reliance_class/supersedes) is quarantined into `status_source_ref`
+     ("NOT Spine standing"), foreign authority fields (canonical/ratified/authority/
+     latest/current) are rejected. No `continuity` import, no subprocess (AST-guarded).
+     `docs/campaigns/slice-2b-continuity-fixture/CAMPAIGN.md`.
+   - **Slice 2c — real Continuity adapter** — **NEXT.** The forcing case for a
+     content-based `build_edition` (a real export has no file path — see the 2a
+     known-seam note). Still no authority/recency/ratification/witness from Continuity.
    - **Slice 2d — retire the provisional manifest** as *transport replacement, not
      authority change* (`retirement_kind: transport_replacement`).
 6. **Bind real `witness_ref`s** when artifacts actually earn a witness — then, and

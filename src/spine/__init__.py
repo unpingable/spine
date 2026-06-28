@@ -30,6 +30,11 @@ from .edition_diff import (
 )
 from .index import IndexEntry, SpineIndex, build_entry, build_index
 from .manifest import Manifest, ManifestArtifact, load_manifest
+from .continuity_fixture import (
+    ContinuityExportFixtureSource,
+    ContinuityShapeError,
+    ForeignAuthorityFieldError,
+)
 from .source import (
     DeclarationSource,
     DeclaredManifest,
@@ -67,6 +72,9 @@ __all__ = [
     "DeclaredManifest",
     "SourceProvenance",
     "ProvisionalGitManifestSource",
+    "ContinuityExportFixtureSource",
+    "ContinuityShapeError",
+    "ForeignAuthorityFieldError",
     "render_markdown",
     "Edition",
     "EditionBuild",
