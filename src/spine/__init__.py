@@ -30,6 +30,12 @@ from .edition_diff import (
 )
 from .index import IndexEntry, SpineIndex, build_entry, build_index
 from .manifest import Manifest, ManifestArtifact, load_manifest
+from .source import (
+    DeclarationSource,
+    DeclaredManifest,
+    ProvisionalGitManifestSource,
+    SourceProvenance,
+)
 from .refusal import (
     LOCATED,
     RENDERED,
@@ -57,6 +63,10 @@ __all__ = [
     "Manifest",
     "ManifestArtifact",
     "load_manifest",
+    "DeclarationSource",
+    "DeclaredManifest",
+    "SourceProvenance",
+    "ProvisionalGitManifestSource",
     "render_markdown",
     "Edition",
     "EditionBuild",

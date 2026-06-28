@@ -15,9 +15,12 @@ heterogeneous `mixed_status_corpus`). **An Edition freezes what was *found*, not
 was *true* — it is a receipt for packaging, never a witness for legitimacy.** Now
 that two Editions exist, `spine edition compare` describes the **drift** between
 them — added / removed / changed / unchanged — and mechanically refuses to say which
-is newer, current, or supersedes the other (`EditionSuccessionError`). Next campaign:
-replace `provisional_git_manifest_v0` with a Continuity source — deferred until there
-is a real interface to replace. Continuity source remains the final destination.
+is newer, current, or supersedes the other (`EditionSuccessionError`). **Slice 2a
+defined the declaration-source throat** (`src/spine/source.py` — `DeclarationSource`
+/ `DeclaredManifest` / `SourceProvenance`), wrapping the existing manifest; the
+Continuity-as-source arc now breathes through that interface (2b fixture → 2c real
+adapter → 2d retire the provisional manifest), instead of plugging Continuity
+straight into Spine. Continuity source remains the final destination.
 
 Spine is a **read plane** over a *declared provisional git manifest*. It:
 
@@ -65,10 +68,24 @@ Spine-reads-from-Continuity; the git manifest is a specimen, not a destination.
    only intact, untampered packages (`EditionLoadError` on `index_digest` mismatch).
    The diff has no winner/latest/current/rank field — the closed field set is the
    wall. See `docs/campaigns/slice-1d-edition-compare/CAMPAIGN.md`.
-5. **Replace `provisional_git_manifest_v0` with a Continuity source** — **NEXT**, but
-   still deferred until there is a real interface to replace. Only once
-   there's a real interface to replace (one manifest, one index, one edition, one
-   corpus-expansion pain point) instead of plumbing on a hunch.
+5. **Continuity-as-source arc.** The *throat is now defined* — don't plug Continuity
+   straight in; let it breathe through the interface.
+   - ~~**Slice 2a — Declaration Source Interface v0.**~~ **DONE.**
+     `src/spine/source.py`: `DeclarationSource` (Protocol, verb `declare()`),
+     `DeclaredManifest`, `SourceProvenance` (closed, no authority field),
+     `ProvisionalGitManifestSource` wrapping the existing manifest. The throat is
+     transparent (index byte-identical via source vs `load_manifest`) and a source
+     declaring a witnessless `ratified` ref is still refused at index-build — a
+     source declares candidates for location, it confers no standing.
+     `docs/campaigns/slice-2a-declaration-source/CAMPAIGN.md`.
+   - **Slice 2b — Continuity-shaped static fixture** — **NEXT.** A static export
+     fixture, *not* live Continuity: prove Spine consumes a Continuity-shaped
+     declaration without needing Continuity (tests stay environment-free, no séance
+     rituals).
+   - **Slice 2c — real Continuity adapter.** Forcing case for a content-based
+     `build_edition` (a real export has no file path — see the 2a known-seam note).
+   - **Slice 2d — retire the provisional manifest** as *transport replacement, not
+     authority change* (`retirement_kind: transport_replacement`).
 6. **Bind real `witness_ref`s** when artifacts actually earn a witness — then, and
    only then, the index may show "the sign says ratified" *with* its witness.
 
