@@ -1,0 +1,69 @@
+# Spine Slice 1c — a larger, deliberately heterogeneous declared corpus.
+#
+# Where the predicate-witness manifest is one coherent family, this corpus is
+# chosen to PRESSURE THE WALL: it mixes a canonical-feeling charter, a candidate
+# doctrine note, a process/campaign artifact, a working note, and an openly
+# PARKED (obsolete) draft. The point is the invariant:
+#
+#     Corpus expansion increases surface area, not authority.
+#
+# Being in this corpus — or in the Edition minted from it — says nothing about a
+# doc being true, current, or governed. Every entry below is unwitnessed
+# (witness_ref: null), exactly like the genesis family; nothing here has earned a
+# witness, and the read plane makes that absence legible rather than papering it.
+#
+# reported_status is Spine's CLOSED vocabulary {ratified, candidate, non-binding,
+# unknown}. Where a doc self-declares a status outside that vocabulary (e.g.
+# "carded, pre-code", "PARKED"), it is normalized to the nearest NON-authoritative
+# bucket (downgrade-only, never toward authority) and the verbatim self-declaration
+# is preserved in status_source_ref. A doc that declares NO quotable status is
+# reported `unknown` — Spine does not promote "important-looking" into "governed".
+#
+# NB: the genesis predicate_witness_manifest.yaml and its Edition 1 are left
+# frozen and reproducible; this is a second declared corpus, not a mutation of the
+# first. (Slice 1c forbids: discovery, crawling, "latest", doctrine resolver,
+# witness synthesis, Continuity integration, authority-from-inclusion.)
+
+adapter: provisional_git_manifest_v0
+
+artifacts:
+  # Canonical-FEELING but unstatused: the read-plane charter itself. Foundational,
+  # yet it declares no status Spine can quote — so Spine says `unknown`, not
+  # "assumed canonical". Importance is not authority.
+  - repo: spine
+    path: DOCTRINE.md
+    reported_status: unknown
+    status_source_ref: null
+    witness_ref: null
+
+  # A doctrine note that openly self-declares candidate. Doctrine-shaped, not
+  # doctrine-authoritative.
+  - repo: agent_gov
+    path: docs/doctrine/weak_property_strong_property.md
+    reported_status: candidate
+    status_source_ref: "self:header Status: doctrine note, candidate"
+    witness_ref: null
+
+  # A process / campaign artifact. Self-declares "carded, pre-code" -> normalized
+  # to non-binding (a plan is not a governing surface); verbatim preserved here.
+  - repo: spine
+    path: docs/campaigns/slice-1-doctrine-index/CAMPAIGN.md
+    reported_status: non-binding
+    status_source_ref: "self:header Status: carded, pre-code"
+    witness_ref: null
+
+  # A deliberately non-authoritative working note.
+  - repo: agent_gov
+    path: working/candidate-laundering-braid.md
+    reported_status: candidate
+    status_source_ref: "self:header Status: candidate, for a fresh session — do NOT promote now"
+    witness_ref: null
+
+  # THE MUSEUM LABEL: an openly PARKED, uncommitted draft. Included so Spine proves
+  # it can carry obsolete material without laundering it into "current doctrine".
+  # Included is not current. "PARKED" -> non-binding; verbatim preserved.
+  - repo: agent_gov
+    path: working/parked-p31-activation.md
+    reported_status: non-binding
+    status_source_ref: "self:header Status: PARKED 2026-06-13, uncommitted (draft moved to working/parked-p31/)"
+    witness_ref: null

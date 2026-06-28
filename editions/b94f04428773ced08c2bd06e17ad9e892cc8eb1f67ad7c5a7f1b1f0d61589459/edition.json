@@ -1,0 +1,20 @@
+{
+  "edition_id": "sha256:b94f04428773ced08c2bd06e17ad9e892cc8eb1f67ad7c5a7f1b1f0d61589459",
+  "created_at": "2026-06-27T00:00:00Z",
+  "ingress_adapter": "provisional_git_manifest_v0",
+  "manifest_digest": "sha256:1f4decef1c56d181739109798239e8e73721f1c9c3971b0f812f2a4af2c80b46",
+  "index_digest": "sha256:c7d249bcea089aeea101373a5862ecf03f56e1f22ddfb078b11125cbec9b2b4d",
+  "render_digest": "sha256:aa75f86da91b74cabdb726c81214c89ebeaa93610c622e939566c7cdb89ed3b3",
+  "build_provenance": {
+    "tool": "spine",
+    "tool_version": "0.0.1",
+    "ingress_adapter": "provisional_git_manifest_v0",
+    "manifest_ref": "specimens/mixed_status_corpus.yaml",
+    "created_at": "2026-06-27T00:00:00Z",
+    "reproduce": "spine edition create specimens/mixed_status_corpus.yaml --created-at 2026-06-27T00:00:00Z --out <editions-root>"
+  },
+  "spine_assertions": [
+    "located",
+    "rendered"
+  ]
+}

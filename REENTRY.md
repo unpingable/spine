@@ -6,11 +6,12 @@
 
 ## Current state
 
-Slice 1 shipped at **`229a503`**. Slice 1b (Edition) shipped next: an immutable,
-content-addressed snapshot of a render. The first Edition of the predicate-witness
-specimen corpus is committed under `editions/` (`sha256:fabb36a4…`, pinned in
+**`main` pushed through `6647ad2`.** Slice 1 shipped at `229a503`; Slice 1b
+(Edition) at `6647ad2`. The first Edition of the predicate-witness specimen corpus
+is committed under `editions/` (`sha256:fabb36a4…`, pinned in
 `tests/test_edition_packaging.py`). **An Edition freezes what was *found*, not what
 was *true* — it is a receipt for packaging, never a witness for legitimacy.**
+Next campaign: corpus expansion (Slice 1c). Continuity source remains deferred.
 
 Spine is a **read plane** over a *declared provisional git manifest*. It:
 
@@ -42,10 +43,15 @@ Spine-reads-from-Continuity; the git manifest is a specimen, not a destination.
    not authority. `spine edition create … --created-at … --out …`.
 2. ~~**First edition** of the predicate-witness specimen corpus.~~ **DONE** —
    committed under `editions/`.
-3. **Expand the declared corpus** — now *unblocked* (an Edition exists). Add
-   declared, concrete references to the manifest; re-mint an Edition to freeze the
-   richer corpus. This is the next live surface.
-4. **Replace `provisional_git_manifest_v0` with a Continuity source** — only once
+3. ~~**Expand the declared corpus** (Slice 1c).~~ **DONE.** A second, heterogeneous
+   declared corpus (`specimens/mixed_status_corpus.yaml`, 5 refs spanning
+   canonical-feel / candidate / non-binding / unknown) + Edition 2
+   (`sha256:b94f0442…`). Genesis family + Edition 1 left frozen. Proved: inclusion,
+   renderability, and Edition membership confer no authority; an obsolete (PARKED)
+   doc is carried without being laundered into "current". See
+   `specimens/mixed_status_corpus.NOTES.md`.
+4. **Replace `provisional_git_manifest_v0` with a Continuity source** — **NEXT**, but
+   still deferred until there is a real interface to replace. Only once
    there's a real interface to replace (one manifest, one index, one edition, one
    corpus-expansion pain point) instead of plumbing on a hunch.
 5. **Bind real `witness_ref`s** when artifacts actually earn a witness — then, and

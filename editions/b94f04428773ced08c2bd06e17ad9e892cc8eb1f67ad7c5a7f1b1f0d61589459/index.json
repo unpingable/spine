@@ -1,0 +1,66 @@
+{
+  "ingress_adapter": "provisional_git_manifest_v0",
+  "observed_at": "2026-06-27T00:00:00Z",
+  "entries": [
+    {
+      "canonical_location": "agent_gov:docs/doctrine/weak_property_strong_property.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status: doctrine note, candidate",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-27T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "agent_gov:working/candidate-laundering-braid.md",
+      "reported_status": "candidate",
+      "status_source_ref": "self:header Status: candidate, for a fresh session — do NOT promote now",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-27T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "agent_gov:working/parked-p31-activation.md",
+      "reported_status": "non-binding",
+      "status_source_ref": "self:header Status: PARKED 2026-06-13, uncommitted (draft moved to working/parked-p31/)",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-27T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "spine:DOCTRINE.md",
+      "reported_status": "unknown",
+      "status_source_ref": null,
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-27T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    },
+    {
+      "canonical_location": "spine:docs/campaigns/slice-1-doctrine-index/CAMPAIGN.md",
+      "reported_status": "non-binding",
+      "status_source_ref": "self:header Status: carded, pre-code",
+      "witness_ref": null,
+      "ingress_adapter": "provisional_git_manifest_v0",
+      "observed_at": "2026-06-27T00:00:00Z",
+      "spine_assertions": [
+        "located",
+        "rendered"
+      ]
+    }
+  ]
+}
