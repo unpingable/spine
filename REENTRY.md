@@ -6,15 +6,18 @@
 
 ## Current state
 
-**`main` pushed through `3ccc5cd`.** Slice 1 shipped at `229a503`; Slice 1b
-(Edition) at `6647ad2`; Slice 1c (corpus expansion) at `3ccc5cd`. Two Editions of
-the specimen corpus are committed under `editions/` (Edition 1 `sha256:fabb36a4…`
-pinned in `tests/test_edition_packaging.py`; Edition 2 `sha256:b94f0442…` over the
+**Slices 1 / 1b / 1c / 1d shipped.** Slice 1 at `229a503`; Slice 1b (Edition) at
+`6647ad2`; Slice 1c (corpus expansion) at `3ccc5cd`; Slice 1d (edition compare) is
+the latest commit. Two Editions of the specimen corpus are committed under
+`editions/` (Edition 1 `sha256:fabb36a4…` pinned in
+`tests/test_edition_packaging.py`; Edition 2 `sha256:b94f0442…` over the
 heterogeneous `mixed_status_corpus`). **An Edition freezes what was *found*, not what
-was *true* — it is a receipt for packaging, never a witness for legitimacy.**
-Next campaign: replace `provisional_git_manifest_v0` with a Continuity source —
-deferred until there is a real interface to replace. Continuity source remains the
-final destination.
+was *true* — it is a receipt for packaging, never a witness for legitimacy.** Now
+that two Editions exist, `spine edition compare` describes the **drift** between
+them — added / removed / changed / unchanged — and mechanically refuses to say which
+is newer, current, or supersedes the other (`EditionSuccessionError`). Next campaign:
+replace `provisional_git_manifest_v0` with a Continuity source — deferred until there
+is a real interface to replace. Continuity source remains the final destination.
 
 Spine is a **read plane** over a *declared provisional git manifest*. It:
 
@@ -53,11 +56,20 @@ Spine-reads-from-Continuity; the git manifest is a specimen, not a destination.
    renderability, and Edition membership confer no authority; an obsolete (PARKED)
    doc is carried without being laundered into "current". See
    `specimens/mixed_status_corpus.NOTES.md`.
-4. **Replace `provisional_git_manifest_v0` with a Continuity source** — **NEXT**, but
+4. ~~**Compare editions** (Slice 1d).~~ **DONE.** `spine edition compare <base> <target>`
+   + `src/spine/edition_diff.py`. Reports added / removed / changed / unchanged keyed
+   on `canonical_location`, compared on *substantive* fields (observation time
+   excluded — two editions are observed at different times by construction, so a
+   digest diff would mark everything changed and say nothing). Mechanically refuses
+   succession framing (`EditionSuccessionError` + closed `SUCCESSION_FRAMING`). Loads
+   only intact, untampered packages (`EditionLoadError` on `index_digest` mismatch).
+   The diff has no winner/latest/current/rank field — the closed field set is the
+   wall. See `docs/campaigns/slice-1d-edition-compare/CAMPAIGN.md`.
+5. **Replace `provisional_git_manifest_v0` with a Continuity source** — **NEXT**, but
    still deferred until there is a real interface to replace. Only once
    there's a real interface to replace (one manifest, one index, one edition, one
    corpus-expansion pain point) instead of plumbing on a hunch.
-5. **Bind real `witness_ref`s** when artifacts actually earn a witness — then, and
+6. **Bind real `witness_ref`s** when artifacts actually earn a witness — then, and
    only then, the index may show "the sign says ratified" *with* its witness.
 
 ## Invalid work (the do-not list — this is the load-bearing section)
@@ -68,6 +80,9 @@ Spine-reads-from-Continuity; the git manifest is a specimen, not a destination.
 - ❌ a "latest doctrine" / "current canonical" resolver
 - ❌ witness synthesis
 - ❌ edition-as-authority language (an Edition freezes what was *found*, not what was *true*)
+- ❌ edition-diff succession language — a diff says *added / removed / changed*, never
+  *newer / current / supersedes / latest*. "Which edition is current?" is a verdict
+  for Continuity or Maude; the diff is refused (`EditionSuccessionError`) if it tries.
 - ❌ mutable overwrite of a prior edition
 
 If a proposed feature would let an index entry, an edition, or a render stand in

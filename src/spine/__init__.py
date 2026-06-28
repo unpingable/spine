@@ -20,19 +20,31 @@ from .edition import (
     edition_dir_for,
     write_edition,
 )
+from .edition_diff import (
+    ChangedRef,
+    EditionDiff,
+    EntryRef,
+    diff_editions,
+    load_edition,
+    render_edition_diff,
+)
 from .index import IndexEntry, SpineIndex, build_entry, build_index
 from .manifest import Manifest, ManifestArtifact, load_manifest
 from .refusal import (
     LOCATED,
     RENDERED,
     SPINE_ASSERTIONS,
+    SUCCESSION_FRAMING,
     CrawlAttemptError,
     EditionExistsError,
+    EditionLoadError,
+    EditionSuccessionError,
     SpineBearsStatusError,
     SpineRefusal,
     UnsourcedStatusError,
     UnwitnessedGovernedClaimError,
     check_entry_admissible,
+    check_no_succession_framing,
     check_spine_assertions,
 )
 from .render import render_markdown
@@ -52,9 +64,17 @@ __all__ = [
     "build_edition",
     "write_edition",
     "edition_dir_for",
+    "EditionDiff",
+    "EntryRef",
+    "ChangedRef",
+    "load_edition",
+    "diff_editions",
+    "render_edition_diff",
     "check_entry_admissible",
     "check_spine_assertions",
+    "check_no_succession_framing",
     "SPINE_ASSERTIONS",
+    "SUCCESSION_FRAMING",
     "LOCATED",
     "RENDERED",
     "SpineRefusal",
@@ -63,4 +83,6 @@ __all__ = [
     "UnwitnessedGovernedClaimError",
     "CrawlAttemptError",
     "EditionExistsError",
+    "EditionLoadError",
+    "EditionSuccessionError",
 ]

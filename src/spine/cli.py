@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 from .edition import write_edition
+from .edition_diff import diff_editions, load_edition, render_edition_diff
 from .index import SpineIndex, build_index
 from .manifest import load_manifest
 from .refusal import SpineRefusal
@@ -52,6 +53,25 @@ def _cmd_edition_create(args: argparse.Namespace) -> int:
     )
     print(f"froze edition {edition.edition_id} -> {edition_dir}")
     print("  (An Edition freezes what Spine located; it does not ratify it.)")
+    return 0
+
+
+def _cmd_edition_compare(args: argparse.Namespace) -> int:
+    base = load_edition(args.base)
+    target = load_edition(args.target)
+    diff = diff_editions(base, target)
+    md = render_edition_diff(diff)
+    if args.out:
+        Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.out).write_text(md)
+        print(
+            f"compared {base[0].edition_id} -> {target[0].edition_id}: "
+            f"+{len(diff.added)} -{len(diff.removed)} ~{len(diff.changed)} "
+            f"={len(diff.unchanged)} -> {args.out}"
+        )
+        print("  (A diff describes package drift; it does not say which Edition is current.)")
+    else:
+        sys.stdout.write(md)
     return 0
 
 
@@ -94,6 +114,15 @@ def main(argv: list[str] | None = None) -> int:
         help="editions root; the edition is written to <out>/<edition_id>",
     )
     ec.set_defaults(func=_cmd_edition_create)
+
+    ecmp = esub.add_parser(
+        "compare",
+        help="describe package drift between two frozen editions (never succession)",
+    )
+    ecmp.add_argument("base", help="base edition directory (<editions>/<edition_id>)")
+    ecmp.add_argument("target", help="target edition directory (<editions>/<edition_id>)")
+    ecmp.add_argument("--out", help="write the diff markdown here (default: stdout)")
+    ecmp.set_defaults(func=_cmd_edition_compare)
 
     args = parser.parse_args(argv)
     try:

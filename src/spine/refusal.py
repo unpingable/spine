@@ -12,6 +12,7 @@ the repo is plumbing around this wall.
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable
 
 # --------------------------------------------------------------------------- #
@@ -108,6 +109,22 @@ class EditionExistsError(SpineRefusal):
     no-overwrite rule is the point, so it fails loud."""
 
 
+class EditionLoadError(SpineRefusal):
+    """An Edition directory could not be loaded as a trustworthy frozen package —
+    it is missing, missing a required file, or its recorded ``index_digest`` does
+    not match the index it ships (tamper). A read plane reads only intact frozen
+    packages; a damaged one is refused, never best-effort repaired."""
+
+
+class EditionSuccessionError(SpineRefusal):
+    """Spine's own framing of an edition comparison tried to assert *succession* —
+    that one Edition is newer / current / canonical / supersedes the other. A diff
+    describes package drift, never doctrinal movement: which Edition (if any) is
+    current is a verdict, and verdicts live in Continuity (reliance) or Maude
+    (adjudication), never in a read-plane diff. Direction is a coordinate, not a
+    verdict."""
+
+
 # --------------------------------------------------------------------------- #
 # The wall, as a pure check. Raises a typed SpineRefusal or returns None.
 # --------------------------------------------------------------------------- #
@@ -181,3 +198,39 @@ def check_entry_admissible(
         raise UnknownIngressError(
             f"ingress_adapter {ingress_adapter!r} not in {sorted(KNOWN_INGRESS_ADAPTERS)}"
         )
+
+
+# --------------------------------------------------------------------------- #
+# Succession framing — the words Spine may NEVER use to frame an edition diff.
+# A diff describes package drift; these words turn a difference into a verdict
+# about which Edition wins. Closed and checked, like the legitimacy verbs.
+# --------------------------------------------------------------------------- #
+
+SUCCESSION_FRAMING = frozenset({
+    "newer", "older", "latest", "current", "canonical",
+    "supersede", "supersedes", "superseded",
+    "obsolete", "deprecated", "outdated", "stale",
+    "upgrade", "downgrade", "better", "winner", "recommended",
+})
+
+
+def check_no_succession_framing(*texts: str) -> None:
+    """Refuse any Spine-authored framing string that editorializes an edition diff
+    into succession (``EditionSuccessionError``).
+
+    Applies ONLY to Spine's own contributed prose — headers, column labels, the
+    disclaimer — never to quoted entry data (an entry's already-sourced
+    ``reported_status`` may legitimately be the word ``ratified``; that is a
+    quotation, not Spine's verdict). Word-boundary matched against a lowercased
+    copy so a path like ``docs/recurrent.md`` is not a false ``current`` hit."""
+    for text in texts:
+        lowered = text.lower()
+        hits = sorted(
+            w for w in SUCCESSION_FRAMING
+            if re.search(rf"\b{re.escape(w)}\b", lowered)
+        )
+        if hits:
+            raise EditionSuccessionError(
+                f"edition-diff framing may not assert succession; found {hits!r} "
+                f"(a diff describes package drift, not which Edition is current)"
+            )
