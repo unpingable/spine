@@ -4,6 +4,10 @@
 > wearing the maintainer's face — will try to make Spine *helpful*. **The villain
 > is "helpful search." Shoot it early.**
 
+Design note for the public-MVP campaign (de-staling + specimen corpus):
+[`docs/design/v0-navigable-index.md`](docs/design/v0-navigable-index.md) — covers
+what is already built, open questions OQ-1..OQ-5, and Packets S-A through S-D.
+
 ## Current state
 
 **Slices 1 / 1b / 1c / 1d shipped.** Slice 1 at `229a503`; Slice 1b (Edition) at

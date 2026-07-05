@@ -35,11 +35,86 @@ graph position confers navigability, never authority.) See
 for this refusal in the cross-constellation predicate-witness chain; the canonical
 note lives in `agent_gov` at `docs/cross-tool/predicate-witness-infrastructure-note.md`.
 
+## Try it now
+
+```bash
+pip install -e .[dev]       # dev checkout — see Distribution name section below
+
+spine build specimens/predicate_witness_manifest.yaml \
+    --observed-at 2026-07-05T00:00:00Z \
+    --out output/index.json
+# built 7 entries -> output/index.json (sha256:...)
+
+spine render output/index.json
+# prints the non-authority table — the load-bearing design is in the columns:
+# "Spine asserts" is always "located · rendered"; status is a quotation, never an assertion.
+# Header reads: "Findability is not legitimacy. Every entry below is located and rendered by Spine."
+
+spine edition create specimens/predicate_witness_manifest.yaml \
+    --created-at 2026-07-05T00:00:00Z \
+    --out editions
+# froze edition sha256:...  (An Edition freezes what Spine located; it does not ratify it.)
+
+spine edition compare \
+    editions/fabb36a44c45ff3737c88fcd70d132899d768c8be1d99b33c3a765d1f8be8601 \
+    editions/b94f04428773ced08c2bd06e17ad9e892cc8eb1f67ad7c5a7f1b1f0d61589459
+# describes added / removed / changed / unchanged between two committed Editions
+# mechanically refuses to editorialize: no "newer", "current", or "supersedes"
+```
+
+The existing specimen corpus (`specimens/predicate_witness_manifest.yaml`, 7 declared refs
+across the constellation) and two committed editions (`editions/fabb36a4…`,
+`editions/b94f0442…`) are the genesis fixtures. Every command above exits 0 against them
+as committed.
+
+What you see in the `render` output is the whole point: the "Spine asserts" column is always
+`located · rendered` — nothing more. Status is quoted from the artifact's governing surface
+(`the sign says **candidate**`), never asserted by Spine. Unwitnessed material is flagged:
+`**NONE — unwitnessed**`. There is no `status`, `endorsed`, `verdict`, or `authority` column.
+
+## Stack
+
+The build system is not TBD — it was chosen with Slice 1 and is in place:
+
+- **Python ≥ 3.11**, `pyproject.toml` (setuptools ≥ 61, src-layout under `src/`).
+- **Runtime deps:** `pydantic>=2`, `pyyaml>=6`. No other runtime deps — stdlib `hashlib`
+  for content addressing.
+- **Dev deps:** `pytest>=8`, `ruff` (line-length 100).
+- **Entry point:** `spine = spine.cli:main` (four commands: `build`, `render`,
+  `edition create`, `edition compare`).
+
+Run the suite:
+
+```bash
+python -m pytest -q   # 141 passed, exit 0
+```
+
 ## Status
 
-Early. The charter is fixed; the implementation is not yet started. The first
-slice is the navigable index over the governed corpus — the read plane's reason
-to exist. Build system and stack are TBD and chosen with that first slice.
+**v0 index engine implemented and green.** 141 tests pass at HEAD. The implementation
+covers: manifest loading (crawl-fence refuses globs and trailing-slash directories),
+index build (deterministic, content-addressed), non-authority render, edition packaging
+(immutable, content-addressed, reproducible), edition diff (substantive drift; succession
+refused), declaration-source throat (`source.py`), and a Continuity-shaped fixture. See
+[`REENTRY.md`](REENTRY.md) for the slice-by-slice completion record and next valid work.
+
+The design note for the public-MVP campaign (Packets S-A through S-D) lives at
+[`docs/design/v0-navigable-index.md`](docs/design/v0-navigable-index.md).
+
+## Distribution name (unresolved — OQ-1)
+
+`pyproject.toml` declares `name = "spine"`, but [`NAMING.md`](NAMING.md) forbids a bare
+`spine` distribution name until `governor.spine` renames. The import package name stays
+`spine` (every test file uses `from spine import …`; renaming it breaks all 141 tests).
+Until Packet S-D resolves this, use this repository as a dev checkout:
+
+```bash
+pip install -e .[dev]
+```
+
+Do not publish to PyPI under the bare `spine` name while the constraint is active. See
+[`NAMING.md`](NAMING.md) §"Rule until `governor.spine` renames" and
+[`docs/design/v0-navigable-index.md`](docs/design/v0-navigable-index.md) §8 OQ-1.
 
 ## License
 
