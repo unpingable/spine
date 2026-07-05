@@ -16,7 +16,7 @@ name the boundary — the answer is almost always "that belongs in Continuity
 ## Apply the constellation's own discipline
 
 - **Don't claim a file exists without checking; don't claim tests pass without
-  running them.** (No test suite yet — say so plainly rather than implying one.)
+  running them.** (Suite: `.venv/bin/python -m pytest -q` — 141 tests at v0.)
 - **Cite receipts, not vibes.** When Spine eventually presents an artifact's
   witness/provenance, present the real reference, never a summary that reads as a
   warrant.
@@ -32,6 +32,7 @@ name the boundary — the answer is almost always "that belongs in Continuity
 
 ## Status
 
-Charter fixed; implementation not started. Slice 1 is the navigable index over the
-governed corpus; the build system/stack is chosen with it. Do not scaffold a stack
-before that decision is made with the user.
+Charter fixed; v0 index engine implemented and green (141 tests). Stack: Python
+>=3.11 / setuptools / pydantic / pyyaml / pytest. See README §Status and
+`docs/design/v0-navigable-index.md` (CANDIDATE) for the public-mvp lane-S plan.
+Distribution name is unresolved (OQ-1) — do not rename the `spine` package.

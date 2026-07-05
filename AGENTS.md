@@ -27,15 +27,16 @@ The non-negotiable discipline:
 ## Quick start
 
 ```bash
-# No build system yet — the stack is chosen with Slice 1 (the navigable index).
-# Until then, the repository is charter + doctrine pointers.
-cat DOCTRINE.md NAMING.md
+python3 -m venv .venv && .venv/bin/pip install -e .
+.venv/bin/spine build specimens/predicate_witness_manifest.yaml \
+    --observed-at 2026-07-05T00:00:00Z --out output/index.json
+.venv/bin/spine render output/index.json
 ```
 
 ## Tests
 
-No test suite yet. Once Slice 1 lands a stack, this section gets the real
-commands. **Never claim tests pass without running them.**
+.venv/bin/python -m pytest -q   # 141 tests at v0
+**Never claim tests pass without running them.**
 
 ---
 
