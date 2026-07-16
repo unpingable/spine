@@ -1,0 +1,395 @@
+# Spine Packet S-B — the public-mvp specimen corpus (roadmaps + campaigns).
+#
+# A hand-declared manifest over agent_gov's real planning surfaces: the four
+# roadmap hub files, the 18 per-tool roadmaps, and every campaign's CAMPAIGN.md
+# and STATUS.md that exists. Each file is enumerated by name because the
+# adapter cannot crawl — "Spine never implies scope" is the charter, not a
+# limitation. Cross-repo references (repo: agent_gov from the spine repo) are
+# navigationally legal per the OQ-2 ruling (2026-07-16): Spine indexes a
+# sibling it does not vendor; location is a coordinate, never custody.
+#
+# Status policy (OQ-2 ruling, applied):
+#   * QUOTE WHERE QUOTABLE — where a doc carries a literal Status declaration,
+#     its first paragraph is preserved VERBATIM in status_quote beside the
+#     normalized reported_status, so normalization can never quietly launder
+#     the quotation into an assertion.
+#   * Normalization is downgrade-only, never toward authority:
+#       - "RATIFIED ..."          -> ratified  (6 docs; each carries a witness_ref
+#         to the executed-A8 / Q-A7 record in the 2026-07-02 roadmap-program
+#         handoff — a governed claim without a witness would be refused)
+#       - "DRAFT ..." / "CANDIDATE ..." -> candidate (a draft awaiting
+#         ratification is this estate's candidate)
+#       - quotable but unmapped ("LIVE HUB", "NORMATIVE", "ACTIVE",
+#         "FILED ...") -> unknown + the verbatim quote: the sign says
+#         something, but not in the closed vocabulary. Spine shows the words
+#         and declines the normalization. NORMATIVE in particular is NOT
+#         promoted to ratified — no witness was declared, and importance is
+#         not authority.
+#   * NO QUOTABLE STATUS -> unknown, sourceless. Absence of a declaration is
+#     not a declaration of absence. (Campaign STATUS.md titles are titles.)
+#
+# Edition timestamp: fixed at 2026-07-16T00:00:00Z per the OQ-3 ruling — an
+# identity coordinate chosen for stranger-reproducibility, not a claim about
+# when bytes were generated.
+
+adapter: provisional_git_manifest_v0
+artifacts:
+- repo: agent_gov
+  path: docs/roadmaps/README.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/roadmaps/README.md#status
+  status_quote: '**Status:** LIVE HUB (2026-07-02). Supersedes root `ROADMAP.md` (frozen
+    2026-02-16,
+
+    retained as fossil). AG is the coordination hub: cross-repo integration plans live
+
+    here; each sibling repo keeps its own internal roadmap.'
+- repo: agent_gov
+  path: docs/roadmaps/CONSOLIDATION.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/CONSOLIDATION.md#status
+  status_quote: '**Status:** CANDIDATE REGISTER (2026-07-02). Nothing here is decided. Evidence
+    is
+
+    assembled by slice C1, adjudicated into a recommendation memo by slice C2 (see
+
+    `docs/campaigns/constellation-reconciliation/NEXT.md`), and **ruled one-by-one by
+
+    the operator** — repo boundaries are authority surfaces, so consolidation verdicts
+
+    are custody-affecting. This file never executes a merge.'
+- repo: agent_gov
+  path: docs/roadmaps/PARKED.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/roadmaps/PARKED.md#status
+  status_quote: '**Status:** LIVE REGISTER (2026-07-02; roster updated same day after operator
+
+    cleanup — gov-webui duplicate removed; witness-stack graveyarded; receipt_kernel
+
+    moved in; wlp fossil renamed `witness-ledger-protocol`; clerk + vscode-governor
+
+    moved OUT to `~/git/agent_gov_ui/` with the other UI shells). Source:
+
+    `~/git/backburner` inventory — **9 residents**.'
+- repo: agent_gov
+  path: docs/roadmaps/ROUTING.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/roadmaps/ROUTING.md#status
+  status_quote: '**Status:** NORMATIVE for `docs/roadmaps/` (2026-07-02). Every slice in
+    the roadmap
+
+    program (tool roadmaps, campaign NEXT files) is written against this document.'
+- repo: agent_gov
+  path: docs/roadmaps/tools/claimc.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/claimc.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/claimc` (HEAD `db776cc`, 2026-06-28; Slices 1–3 complete) · Docket:
+
+    governor-atlas constellation case · ⚠ sibling session may be active in claimc —
+
+    coordinate before any cross-repo slice'
+- repo: agent_gov
+  path: docs/roadmaps/tools/continuity.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/continuity.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/continuity` (HEAD `64599e1`, 2026-06-28) · Docket: governor-atlas
+
+    constellation case · Reliance doctrine: Continuity governs what can be RELIED on;
+
+    Maude governs what must be DECIDED; Spine governs what can be FOUND.'
+- repo: agent_gov
+  path: docs/roadmaps/tools/guvnah.md
+  reported_status: ratified
+  status_source_ref: agent_gov:docs/roadmaps/tools/guvnah.md#status
+  status_quote: '**Status:** RATIFIED (2026-07-02 — Q-A7 RULED: **RETIRED**)
+
+    Repo: `~/git/agent_gov_ui/guvnah` (HEAD `f58fd49`, 2026-02-24; v2.3.2 Electron
+
+    cockpit) · Docket: governor-atlas constellation case · Ruling:
+
+    `docs/campaigns/constellation-reconciliation/DECISIONS.md` Q-A7'
+  witness_ref: agent_gov:working/handoff-2026-07-02-roadmap-program.md
+- repo: agent_gov
+  path: docs/roadmaps/tools/lean.md
+  reported_status: ratified
+  status_source_ref: agent_gov:docs/roadmaps/tools/lean.md#status
+  status_quote: '**Status:** RATIFIED (2026-07-02, A8 — snapshot + drift confirmed by executed
+    evidence slices)
+
+    Repo: `~/git/lean` (HEAD `762967c`, 2026-07-02 — the repo moved TWICE today:
+
+    **v7.0.0 TAGGED same day** (`b9860aa`, artifact authority profiles +
+
+    next-surfaces register; was CANDIDATE at the morning sweep), post-v7 threads
+
+    already open (pathverdict tier-1 extraction in scratch)) · Crosswalk:
+
+    `~/git/lean/docs/AG-AUDIT-CHECKLIST.md`'
+  witness_ref: agent_gov:working/handoff-2026-07-02-roadmap-program.md
+- repo: agent_gov
+  path: docs/roadmaps/tools/linearaccountant.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/linearaccountant.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/linearaccountant` (HEAD `7b07c04`, 2026-06-25; **v0 boundary frozen
+
+    2026-06-04**) · Docket: governor-atlas constellation case (LA edge)'
+- repo: agent_gov
+  path: docs/roadmaps/tools/maude.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/maude.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; role reframed per Q-C2-1 amendment, same
+    day)
+
+    Repo: `~/git/agent_gov_ui/maude` (HEAD `99fb093`, 2026-04-07) · Docket:
+
+    governor-atlas constellation case'
+- repo: agent_gov
+  path: docs/roadmaps/tools/nightshift.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/nightshift.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/nightshift` (HEAD `01a65bf`, 2026-06-12) · Docket: governor-atlas
+
+    constellation case · AG seam: `src/governor/nightshift_adapter.py` (+
+
+    `specs/gaps/GOV_GAP_NIGHTSHIFT_ADAPTER_001.md`) · First natural Governor dogfood'
+- repo: agent_gov
+  path: docs/roadmaps/tools/nq.md
+  reported_status: ratified
+  status_source_ref: agent_gov:docs/roadmaps/tools/nq.md#status
+  status_quote: '**Status:** RATIFIED (2026-07-02, A8 — snapshot + drift confirmed by executed
+    evidence slices)
+
+    Repo: `~/git/nq-root/nq` (HEAD `59616dc`, 2026-07-02) · Docket: governor-atlas
+
+    constellation case (NQ edge) · Consumer seam: `src/governor/nightshift_adapter.py`
+
+    + `src/governor/drill_runner.py` (FindingSnapshot consumers)'
+  witness_ref: agent_gov:working/handoff-2026-07-02-roadmap-program.md
+- repo: agent_gov
+  path: docs/roadmaps/tools/phosphor.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/phosphor.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; role reframed per Q-C2-1 amendment, same
+    day —
+
+    supersedes the morning''s "retire or narrow to read/status")
+
+    Repo: `~/git/agent_gov_ui/gov-webui` (HEAD `2eaed6d`, 2026-03-28; v0.5.0) · Docket:
+
+    governor-atlas constellation case · (backburner duplicate checkout removed by
+
+    operator 2026-07-02 — this path is canonical)'
+- repo: agent_gov
+  path: docs/roadmaps/tools/porter.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/porter.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/porter` (design-only: schema + README ratified, **no commits on
+
+    main**) · Docket: no governor-atlas case yet (correct — no edge exists)'
+- repo: agent_gov
+  path: docs/roadmaps/tools/rrp.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/rrp.md#status
+  status_quote: '**Status:** DRAFT (registered 2026-07-13 by AG naturalization ruling; census
+
+    defect D12 — the repo had an identity artifact with zero commits until
+
+    `rrp 9a0abf6` banked the tree). Ratifiable after first drift check against a
+
+    pushed remote.'
+- repo: agent_gov
+  path: docs/roadmaps/tools/spine.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/spine.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/spine` (HEAD `16ef81f`, 2026-06-28; charter fixed, implementation
+
+    early) · Docket: governor-atlas constellation case · Memory: spine = constellation
+
+    READ plane (indexes, doesn''t bear status)'
+- repo: agent_gov
+  path: docs/roadmaps/tools/standing.md
+  reported_status: ratified
+  status_source_ref: agent_gov:docs/roadmaps/tools/standing.md#status
+  status_quote: '**Status:** RATIFIED (2026-07-02, A8 — snapshot + drift confirmed by executed
+    evidence slices)
+
+    Repo: `~/git/standing` (HEAD `d1883c3`, 2026-06-25; +2 unpushed commits) · Docket:
+
+    governor-atlas constellation case (Standing edge) · Campaign: this tool''s build
+
+    lane IS `docs/campaigns/transition-kernel-pickup/` — this file does not duplicate it.'
+  witness_ref: agent_gov:working/handoff-2026-07-02-roadmap-program.md
+- repo: agent_gov
+  path: docs/roadmaps/tools/transition-kernel.md
+  reported_status: ratified
+  status_source_ref: agent_gov:docs/roadmaps/tools/transition-kernel.md#status
+  status_quote: '**Status:** RATIFIED (2026-07-02, A8 — snapshot + drift confirmed by executed
+    evidence slices)
+
+    Repo: `~/git/transition-kernel` (HEAD 2026-06-18, summit `stage3b2-first-effect`)
+
+    · Campaign: **`docs/campaigns/transition-kernel-pickup/` is the build lane** —
+
+    this file is the tool-view index; it does not duplicate the capsule.'
+  witness_ref: agent_gov:working/handoff-2026-07-02-roadmap-program.md
+- repo: agent_gov
+  path: docs/roadmaps/tools/verifier.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/verifier.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/verifier` (HEAD `0155f5c`, 2026-06-11; schema 0.3.0) · Docket:
+
+    governor-atlas constellation case · AG seam: `src/governor/verifier_gate.py`
+
+    (composition boundary) + `constraint_gate.py` (Z3 sidecar caller)'
+- repo: agent_gov
+  path: docs/roadmaps/tools/wicket-guard.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/wicket-guard.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02)
+
+    Repo: `~/git/wicket-guard` (HEAD `ea58946`, 2026-05-13, v0.0.1 — single commit,
+
+    pre-alpha) · Docket: governor-atlas has no case yet (correctly — no AG edge exists)'
+- repo: agent_gov
+  path: docs/roadmaps/tools/wicket.md
+  reported_status: ratified
+  status_source_ref: agent_gov:docs/roadmaps/tools/wicket.md#status
+  status_quote: '**Status:** RATIFIED (2026-07-02, A8 — snapshot + drift confirmed by executed
+    evidence slices)
+
+    Repo: `~/git/wicket` (HEAD `468883c`, 2026-06-25; SPEC v0.3) · Docket:
+
+    governor-atlas constellation case (Wicket edge)'
+  witness_ref: agent_gov:working/handoff-2026-07-02-roadmap-program.md
+- repo: agent_gov
+  path: docs/roadmaps/tools/wlp.md
+  reported_status: candidate
+  status_source_ref: agent_gov:docs/roadmaps/tools/wlp.md#status
+  status_quote: '**Status:** DRAFT (2026-07-02; ratifiable from exploration evidence)
+
+    Repo: `~/git/wlp` (HEAD `081b1bb`, 2026-06-03; v0.2, Rust) · Docket:
+
+    governor-atlas constellation case · (name collision RESOLVED 2026-07-02: the
+
+    parked spec renamed `~/git/backburner/witness-ledger-protocol`, LINEAGE.md
+
+    in-repo — CONSOLIDATION.md #6)'
+- repo: agent_gov
+  path: docs/campaigns/ag-admit-self-build/CAMPAIGN.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/ag-admit-self-build/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/constellation-reconciliation/CAMPAIGN.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/campaigns/constellation-reconciliation/CAMPAIGN.md#status
+  status_quote: 'Status: **FILED, not started** (2026-07-02). Execution vehicle for the
+    AG
+
+    handoff/reconciliation packet. Alignment, not expansion.'
+- repo: agent_gov
+  path: docs/campaigns/constellation-reconciliation/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/conveyor-dogfood/CAMPAIGN.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/campaigns/conveyor-dogfood/CAMPAIGN.md#status
+  status_quote: 'Status: [STATUS.md](STATUS.md). Rulings: [DECISIONS.md](DECISIONS.md).
+
+    Landing record: [LANDING.md](LANDING.md).'
+- repo: agent_gov
+  path: docs/campaigns/conveyor-dogfood/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/corpus-custody/CAMPAIGN.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/campaigns/corpus-custody/CAMPAIGN.md#status
+  status_quote: 'Status: **ACTIVE 2026-07-02 night.** Opened directly after B2''s ruling
+    *"the
+
+    corpus is the contract"* made corpus custody constitutional. Resolves Q-B3
+
+    (pickup DECISIONS) and gates B5 (the 9 missing corpus cases).'
+- repo: agent_gov
+  path: docs/campaigns/corpus-custody/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/docs-professionalization/CAMPAIGN.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/docs-professionalization/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/governed-playbooks-track-b/CAMPAIGN.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/campaigns/governed-playbooks-track-b/CAMPAIGN.md#status
+  status_quote: 'Status: **active gov loop** (2026-06-24). A governed AG development campaign
+    over the
+
+    `governor.playbooks` measurement layer. Integration branch: `feat/playbooks-gov-loop`
+
+    (merges `docs/governed-playbooks-capture` + `feat/playbooks-slice-0`).'
+- repo: agent_gov
+  path: docs/campaigns/governed-shell/CAMPAIGN.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/campaigns/governed-shell/CAMPAIGN.md#status
+  status_quote: 'Status: **FILED 2026-07-02; GS-0/GS-1 executed with filing.** Fills roadmap
+
+    slots **R-MAUDE-3** (maude product boundary) and the **machinery half of
+
+    R-PHOS-2** (lane abstraction; ops-casework *content* stays operator-owned).
+
+    Spans agent_gov + maude + gov-webui; AG is custody root, so the capsule lives
+
+    here.'
+- repo: agent_gov
+  path: docs/campaigns/governed-shell/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/nightshift-functional-mvp/CAMPAIGN.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/nightshift-functional-mvp/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/public-mvp/CAMPAIGN.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/public-mvp/STATUS.md
+  reported_status: unknown
+- repo: agent_gov
+  path: docs/campaigns/transition-kernel-pickup/CAMPAIGN.md
+  reported_status: unknown
+  status_source_ref: agent_gov:docs/campaigns/transition-kernel-pickup/CAMPAIGN.md#status
+  status_quote: 'Status: **resumed under the roadmap program** (2026-07-02; was reduction
+    mode
+
+    2026-06-23). Slices 1a/1a-bis DONE in Standing (unpushed); AG Slice 1b (=B4)
+
+    unblocked. The 2026-07-02 resume adds the **B-series** (Rust-kernel lane): the
+
+    standalone `~/git/transition-kernel` repo — Rust `Admit | Refuse(kind,reasons) |
+
+    Escalate(required_authority)`, 9-case byte-conformance vs Python via
+
+    `scripts/differential.py`, summit `stage3b2-first-effect` — was NOT in the
+
+    2026-06-23 inventory and must be reconciled (B1) before Rust work resumes.'
+- repo: agent_gov
+  path: docs/campaigns/transition-kernel-pickup/STATUS.md
+  reported_status: unknown

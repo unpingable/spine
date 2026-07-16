@@ -1,0 +1,20 @@
+{
+  "edition_id": "sha256:b9b16649841b281d8354952ed2c3a7790a1ef343e004e651ffdccd884ffd504d",
+  "created_at": "2026-07-16T00:00:00Z",
+  "ingress_adapter": "provisional_git_manifest_v0",
+  "manifest_digest": "sha256:7779d6b98b09fa4ef9acad9f31dcd4f2f368dfcf343377a0a6dc5ede70663dd4",
+  "index_digest": "sha256:2abe1e7c3ddf8aa10f7d540dc924349c71c2914731a27d1473208ddd26eafedb",
+  "render_digest": "sha256:18c99275f68f064634a06634026fbc64f736759a55349dea130d1beb36c10922",
+  "build_provenance": {
+    "tool": "spine",
+    "tool_version": "0.0.1",
+    "ingress_adapter": "provisional_git_manifest_v0",
+    "manifest_ref": "specimens/public_mvp_roadmaps_campaigns.yaml",
+    "created_at": "2026-07-16T00:00:00Z",
+    "reproduce": "spine edition create specimens/public_mvp_roadmaps_campaigns.yaml --created-at 2026-07-16T00:00:00Z --out <editions-root>"
+  },
+  "spine_assertions": [
+    "located",
+    "rendered"
+  ]
+}

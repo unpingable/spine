@@ -37,8 +37,16 @@ def _table_safe(text: str) -> str:
 def _status_cell(entry) -> str:
     """The reported status, always framed as a quotation — never a bare verb.
     Where the verbatim wording was captured, it is shown next to its
-    normalization so the reader can check the normalization themselves."""
+    normalization so the reader can check the normalization themselves. An
+    ``unknown`` entry that still carries a quote is the honest middle case:
+    the sign says something, but not in the closed vocabulary — show the
+    words, decline the normalization."""
     if entry.reported_status == STATUS_UNKNOWN:
+        if entry.status_quote is not None:
+            return (
+                "_(not normalized)_ — the sign says verbatim: "
+                f"“{_table_safe(entry.status_quote)}”"
+            )
         return "_(no status reported)_"
     governed = entry.reported_status in AUTHORITATIVE_STATUSES
     # Even a governed claim is quoted, never asserted by Spine.
