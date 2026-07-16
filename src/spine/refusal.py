@@ -86,6 +86,14 @@ class UnknownStatusError(SpineRefusal):
     """reported_status is not in the closed vocabulary."""
 
 
+class UnattributedQuoteError(SpineRefusal):
+    """A ``status_quote`` with no ``status_source_ref``. The verbatim quote
+    exists to keep the normalized ``reported_status`` honest — a quotation
+    that cannot say where it was read is not a quotation, it is Spine's own
+    wording wearing quote marks (OQ-2 ruling, 2026-07-16: retain the quoted
+    text *and* its locator; never launder quotation into assertion)."""
+
+
 class UnknownIngressError(SpineRefusal):
     """ingress_adapter is not a known adapter."""
 
@@ -155,6 +163,7 @@ def check_entry_admissible(
     witness_ref: str | None,
     ingress_adapter: str,
     spine_assertions: Iterable[str],
+    status_quote: str | None = None,
 ) -> None:
     """Enforce the read-plane wall on a would-be index entry.
 
@@ -167,9 +176,12 @@ def check_entry_admissible(
     3. A reported status must quote its source (``UnsourcedStatusError``) —
        except ``unknown``, which is the honest "Spine doesn't know" and needs no
        source.
-    4. A governed claim (``ratified``) must carry a witness
+    4. A verbatim ``status_quote`` must carry its locator
+       (``UnattributedQuoteError``) — a quote without a source ref is Spine's
+       own wording wearing quote marks.
+    5. A governed claim (``ratified``) must carry a witness
        (``UnwitnessedGovernedClaimError``).
-    5. The ingress adapter must be known (``UnknownIngressError``).
+    6. The ingress adapter must be known (``UnknownIngressError``).
     """
     if not canonical_location or not canonical_location.strip():
         raise SpineRefusal("canonical_location is required")
@@ -185,6 +197,12 @@ def check_entry_admissible(
         raise UnsourcedStatusError(
             f"reported_status {reported_status!r} requires a status_source_ref "
             "(Spine quotes a governing surface; it does not become one)"
+        )
+
+    if status_quote is not None and not (status_source_ref and status_source_ref.strip()):
+        raise UnattributedQuoteError(
+            "status_quote requires a status_source_ref: a quotation that cannot "
+            "say where it was read is not a quotation"
         )
 
     if reported_status in AUTHORITATIVE_STATUSES and not (witness_ref and witness_ref.strip()):

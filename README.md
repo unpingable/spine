@@ -7,6 +7,15 @@ material navigable, legible, and durable for readers — including strangers —
 > Continuity governs what can be relied on. Maude governs what must be decided.
 > **Spine governs what can be found and read.**
 
+> ⚠️ **PROVISIONAL INGRESS — do not script against it as a stable interface.**
+> The only ingress adapter today is `provisional_git_manifest_v0` (named ugly
+> on purpose). It is scaffolding: the settled architecture reads declared
+> references from Continuity, and this adapter exists solely so the index,
+> edition, and refusal machinery could be built and tested first. Its manifest
+> schema may change or disappear without a deprecation path. The *output*
+> contracts (index entries, editions, the refusal wall) are the stable part;
+> the ingress is not. (OQ-5 ruling, 2026-07-16.)
+
 See [`DOCTRINE.md`](DOCTRINE.md) for what Spine is allowed to be, and
 [`NAMING.md`](NAMING.md) for the `governor.spine` / `~/git/spine` name collision
 and its resolution.

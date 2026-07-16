@@ -28,14 +28,25 @@ architecture). Observed at: `{observed_at}`. Index digest: `{index_digest}`.
 """
 
 
+def _table_safe(text: str) -> str:
+    """Make verbatim text safe inside a markdown table cell without altering
+    its wording: escape pipes, flatten newlines."""
+    return text.replace("|", "\\|").replace("\n", " ⏎ ")
+
+
 def _status_cell(entry) -> str:
-    """The reported status, always framed as a quotation — never a bare verb."""
+    """The reported status, always framed as a quotation — never a bare verb.
+    Where the verbatim wording was captured, it is shown next to its
+    normalization so the reader can check the normalization themselves."""
     if entry.reported_status == STATUS_UNKNOWN:
         return "_(no status reported)_"
     governed = entry.reported_status in AUTHORITATIVE_STATUSES
     # Even a governed claim is quoted, never asserted by Spine.
     mark = " ⚠ governed-claim" if governed else ""
-    return f'the sign says **{entry.reported_status}**{mark}'
+    cell = f'the sign says **{entry.reported_status}**{mark}'
+    if entry.status_quote is not None:
+        cell += f' — verbatim: “{_table_safe(entry.status_quote)}”'
+    return cell
 
 
 def render_markdown(index: SpineIndex) -> str:

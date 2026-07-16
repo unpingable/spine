@@ -121,6 +121,11 @@ class Edition(BaseModel):
 
     edition_id: str
     created_at: str
+    """The EDITION timestamp — a caller-declared identity coordinate of this
+    frozen package, chosen for reproducibility (a fixed, documented value is
+    correct for a public edition; OQ-3 ruling, 2026-07-16). It does not claim
+    to be the wall-clock moment bytes were generated — build time is
+    environmental noise unless separately recorded in ``build_provenance``."""
     ingress_adapter: str
     manifest_digest: str
     index_digest: str

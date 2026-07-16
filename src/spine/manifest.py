@@ -38,6 +38,13 @@ class ManifestArtifact(BaseModel):
     reported_status: str
     status_source_ref: str | None = None
     witness_ref: str | None = None
+    status_quote: str | None = None
+    """Verbatim quoted wording from the governing surface (OQ-2 ruling,
+    2026-07-16). ``reported_status`` is the closed-vocabulary normalization;
+    this field preserves the exact text so normalization never quietly
+    launders a quotation into an assertion. Optional — a doc with no
+    machine-quotable status has no quote — but a quote without a
+    ``status_source_ref`` is refused at entry admission."""
 
     @property
     def canonical_location(self) -> str:

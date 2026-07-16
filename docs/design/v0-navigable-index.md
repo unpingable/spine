@@ -328,3 +328,73 @@ Order: **S-A → S-B → S-C**; **S-D** only on OQ-1 ratification.
   temporary. **Q:** for a public MVP, how loudly should the front matter mark the
   ingress adapter as provisional/scaffolding so a stranger does not mistake it
   for the settled interface?
+
+---
+
+## OQ rulings — 2026-07-16 (operator)
+
+All five ruled; recorded verbatim-in-substance from the operator's session.
+
+- **OQ-1 — RULED: qualify the distribution only.** Distribution name becomes
+  `spine-readplane` (normalized `spine_readplane`); the *import* package stays
+  `spine`, tests unchanged. Caveat recorded with the ruling: this resolves the
+  naming-governance conflict with `NAMING.md`, not the generic Python-module
+  collision risk — renaming the public import API merely because the word is
+  generic would be gratuitous churn unless an actual collision appears.
+  Applied at Packet S-D (the `pyproject.toml` change is S-D's opening move).
+
+- **OQ-2 — RULED: quote where quotable; `unknown` otherwise. Cross-repo
+  references allowed.** Absence of a declaration is not a declaration of
+  absence. **Sharpening (load-bearing):** the specimen must retain the quoted
+  text *and* its locator, not merely normalize it into `reported_status` —
+  otherwise quotation is quietly laundered into assertion.
+  **Applied 2026-07-16:** `status_quote` field (manifest → entry → render),
+  `UnattributedQuoteError` (a quote without a source ref is refused),
+  digest discipline (quote is content: included in `entry_digest` when
+  present; absent-quote entries hash exactly as before, so the committed
+  genesis editions keep their digests). Tests: `tests/test_status_quote.py`
+  (7; mutation-probed — neutering the refusal fails the pinning test).
+
+- **OQ-3 — RULED: fixed timestamp, named as the *edition* timestamp.** It is
+  an identity coordinate of the frozen package, chosen for reproducibility —
+  it does not claim to be when arbitrary bytes were generated; build time is
+  environmental noise unless separately recorded (it is, in
+  `build_provenance.created_at`). Docstring pinned on `Edition.created_at`.
+
+- **OQ-4 — RULED as a split: defer the artifact, pour the rebar.**
+  *Stele implementation:* **deferred** pending a forcing case — building one
+  now would be ceremonial architecture. *Stele accommodation:* **required
+  now**, limited to preserving the seams:
+  1. An **edition** is the reproducible navigational artifact; a **stele** is
+     a deliberately durable, citable projection of some part of it — not
+     "edition rendered nicely."
+  2. Edition records must be independently addressable — stable id, source
+     locator, quoted text, provenance, and edition identity must survive
+     extraction without the index runtime around them.
+  3. Presentation stays out of the evidence model: a stele consumes the same
+     records as the index, never a second schema.
+  4. Durability metadata is *reserved without semantics* (source edition,
+     content digest, schema/version id, edition timestamp, selection rule,
+     provenance links) — **no** `SteleStatus`, lifecycle machine, publishing
+     workflow, or ceremonial ontology until a real case demands it.
+
+  > A future stele must be derivable from an edition's quoted,
+  > provenance-bearing records without reinterpretation or repository
+  > access. No stele format or publication mechanism is committed in v0.
+
+  **Falsification pass (ruled; run 2026-07-16): the pre-ruling schema FAILED
+  it** — no field retained the verbatim quoted wording, so a faithfully
+  extracted durable record was impossible (the exact OQ-2 laundering).
+  Fixed by the `status_quote` work above; the pass is now pinned as
+  `test_one_record_extracts_faithfully_without_the_runtime`, which extracts
+  one record to plain data and checks every stele-relevant coordinate. With
+  that, the answer is YES — so per the ruling, we stop here.
+
+- **OQ-5 — RULED: loud.** "Temporary" buried three paragraphs down becomes
+  "supported architecture" the moment a stranger scripts against it. Applied:
+  provisional-ingress callout in the README front matter; the render header
+  already carries the provisional marking on every artifact.
+
+**Packet order confirmed: S-B → S-C → S-D.** Build the artifact, prove a
+stranger can navigate it, then package the thing they actually ran —
+packaging first would produce a conveniently installable ambiguity.

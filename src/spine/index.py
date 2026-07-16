@@ -33,22 +33,30 @@ class IndexEntry(BaseModel):
     ingress_adapter: str = refusal.INGRESS_PROVISIONAL_GIT
     observed_at: str
     spine_assertions: tuple[str, ...] = Field(default=(LOCATED, RENDERED))
+    status_quote: str | None = None
+    """Verbatim quoted wording from the governing surface; ``reported_status``
+    is its closed-vocabulary normalization (OQ-2 ruling, 2026-07-16)."""
 
     @property
     def entry_digest(self) -> str:
         """Content hash over the entry's meaningful fields. Deterministic;
         excludes itself. ``observed_at`` is included so a re-observation at a
-        different time is a different entry."""
+        different time is a different entry. ``status_quote`` joins the body
+        only when present, so every pre-quote entry (including the committed
+        genesis editions) keeps its recorded digest."""
+        fields: dict = {
+            "canonical_location": self.canonical_location,
+            "reported_status": self.reported_status,
+            "status_source_ref": self.status_source_ref,
+            "witness_ref": self.witness_ref,
+            "ingress_adapter": self.ingress_adapter,
+            "observed_at": self.observed_at,
+            "spine_assertions": list(self.spine_assertions),
+        }
+        if self.status_quote is not None:
+            fields["status_quote"] = self.status_quote
         body = json.dumps(
-            {
-                "canonical_location": self.canonical_location,
-                "reported_status": self.reported_status,
-                "status_source_ref": self.status_source_ref,
-                "witness_ref": self.witness_ref,
-                "ingress_adapter": self.ingress_adapter,
-                "observed_at": self.observed_at,
-                "spine_assertions": list(self.spine_assertions),
-            },
+            fields,
             sort_keys=True,
             separators=(",", ":"),
         ).encode("utf-8")
@@ -69,6 +77,7 @@ def build_entry(
     witness_ref: str | None = None,
     ingress_adapter: str = refusal.INGRESS_PROVISIONAL_GIT,
     spine_assertions: tuple[str, ...] = (LOCATED, RENDERED),
+    status_quote: str | None = None,
 ) -> IndexEntry:
     """Build a wall-checked ``IndexEntry`` or raise a typed ``SpineRefusal``.
 
@@ -83,6 +92,7 @@ def build_entry(
         witness_ref=witness_ref,
         ingress_adapter=ingress_adapter,
         spine_assertions=spine_assertions,
+        status_quote=status_quote,
     )
     return IndexEntry(
         canonical_location=canonical_location,
@@ -92,6 +102,7 @@ def build_entry(
         ingress_adapter=ingress_adapter,
         observed_at=observed_at,
         spine_assertions=spine_assertions,
+        status_quote=status_quote,
     )
 
 
@@ -135,6 +146,7 @@ def build_index(manifest, *, observed_at: str) -> SpineIndex:
             witness_ref=art.witness_ref,
             ingress_adapter=manifest.adapter,
             observed_at=observed_at,
+            status_quote=art.status_quote,
         )
         for art in manifest.artifacts
     ]
