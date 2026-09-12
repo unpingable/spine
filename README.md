@@ -4,8 +4,10 @@
 material navigable, legible, and durable for readers — including strangers —
 **without requiring oral tradition.**
 
-> Continuity governs what can be relied on. Maude governs what must be decided.
-> **Spine governs what can be found and read.**
+> Continuity supplies the semantic substrate for reliance. Maude's approved
+> PlanCore validation prepares and validates proposals; human acceptance remains
+> required, and AG is the authority boundary for any governed authorization.
+> **Spine governs only what can be found and read.**
 
 > ⚠️ **PROVISIONAL INGRESS — do not script against it as a stable interface.**
 > The only ingress adapter today is `provisional_git_manifest_v0` (named ugly
@@ -22,13 +24,18 @@ and its resolution.
 
 ## Position in the constellation
 
-Spine **depends on Continuity** (the semantic substrate — what can be relied on);
-Continuity does not depend on Spine. Spine may arrange, package, and present
-governed material; it **does not originate canonical semantic state**, and it
-**does not adjudicate** (that is Maude's). Maude is the upstream path for
-adjudicated material destined for publication, but not the sole ingress —
-imported documents, external references, generated indexes, and editions
-assembled from already-governed material may enter Spine directly.
+Spine's intended semantic source is **Continuity**, but the public implementation
+does not yet depend on it: its only live ingress is the declared
+`provisional_git_manifest_v0` transport. The committed
+`ContinuityExportFixtureSource` is a static shape fixture, not a Continuity
+integration. Spine may arrange, package, and present material; it does not
+originate canonical semantic state, validate a PlanCore, obtain human acceptance,
+or authorize work through AG. Material may be declared from public manifests,
+imported documents, external references, generated indexes, or editions.
+
+See [HOWTO.md](HOWTO.md) for a session-orientation path. It is a local, read-only
+way to build and compare declared packages; it is not a service, schema, or
+decision workflow.
 
 ## The read-plane discipline (load-bearing)
 
@@ -95,12 +102,12 @@ The build system is not TBD — it was chosen with Slice 1 and is in place:
 Run the suite:
 
 ```bash
-python -m pytest -q   # 141 passed, exit 0
+python -m pytest -q   # 153 passed at the current public base, exit 0
 ```
 
 ## Status
 
-**v0 index engine implemented and green.** 141 tests pass at HEAD. The implementation
+**v0 index engine implemented and green.** 153 tests pass at the current public base. The implementation
 covers: manifest loading (crawl-fence refuses globs and trailing-slash directories),
 index build (deterministic, content-addressed), non-authority render, edition packaging
 (immutable, content-addressed, reproducible), edition diff (substantive drift; succession

@@ -10,23 +10,27 @@ excavate later.
 
 ## Position in the constellation
 
-- **Continuity** governs what can be relied on. (Semantic substrate.)
-- **Maude** governs what must be decided. (Adjudication surface.)
+- **Continuity** is the intended semantic substrate for reliance; no live
+  Continuity dependency is implemented here.
+- **Maude** supplies approved PlanCore validation for proposals; a human accepts
+  proposals, and **AG** is the authority boundary for governed authorization.
 - **Spine** governs what can be found and read. (Read plane.)
 
-Spine depends on Continuity. Continuity does not depend on Spine. Spine may
-arrange, package, and present governed material, but it does not originate
-canonical semantic state.
+Spine's intended architecture reads declarations from Continuity; Continuity does
+not depend on Spine. Spine may arrange, package, and present governed material,
+but it does not originate canonical semantic state.
 
-Maude is the upstream path for adjudicated material destined for publication,
-but not the sole ingress to Spine. Imported documents, external references,
-generated indexes, and editions assembled from already-governed material may
-enter Spine directly.
+Spine performs none of PlanCore validation, human acceptance, or AG
+authorization. The current public ingress is a provisional declared Git manifest;
+the static Continuity-shaped fixture is a substitution fixture, not an actual
+Continuity dependency. Imported documents, external references, generated indexes,
+and editions assembled from already-governed material may be declared directly.
 
 ## Charter
 
-- **C1.** Continuity governs what can be relied on.
-- **C2.** Maude governs what must be decided.
+- **C1.** Spine may present declared material without inferring reliance from it.
+- **C2.** PlanCore validation, human acceptance, and AG authorization remain
+  outside Spine.
 - **C3.** Spine governs what can be found and read.
 - **C4.** Presentation must not collapse into authority.
 - **C5.** Spine-native objects include at least *index*, *edition*, and

@@ -19,8 +19,11 @@ The non-negotiable discipline:
 - **Findability is not legitimacy.** Spine helps you *find* a governed artifact;
   it never *authorizes* one. Do not build anything that lets an index entry stand
   in for a witness, a verdict, or a grant.
-- **Spine does not originate canonical semantic state.** That is Continuity's.
-- **Spine does not adjudicate.** That is Maude's.
+- **Spine does not originate canonical semantic state.** Its public implementation
+  currently uses a provisional Git manifest; the Continuity fixture is static.
+- **Spine does not validate a PlanCore, accept a proposal, or authorize work.**
+  Those remain respectively Maude's approved validation path, a human action, and
+  AG's authority boundary.
 - Spine reads from already-governed material and presents it. If a feature would
   make Spine *decide* or *certify* something, it belongs in another plane.
 
@@ -35,8 +38,11 @@ python3 -m venv .venv && .venv/bin/pip install -e .
 
 ## Tests
 
-.venv/bin/python -m pytest -q   # 141 tests at v0
+.venv/bin/python -m pytest -q   # 153 tests at the current public base
 **Never claim tests pass without running them.**
+
+For session orientation, use [HOWTO.md](HOWTO.md). It builds and compares
+declared packages locally; it is not a new service, schema, or decision path.
 
 ---
 
