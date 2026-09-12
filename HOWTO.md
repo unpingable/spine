@@ -13,15 +13,67 @@ concrete-file transport, not a crawler and not an actual Continuity dependency.
 including a `supersedes` field, remains visibly quoted metadata and never becomes a
 Spine decision.
 
-For a local orientation session, use only public or synthetic references and an
-empty output directory:
+For a local orientation session, use only public or synthetic references. This
+complete synthetic example uses the public `provisional_git_manifest_v0` shape;
+the strings below are labels for local fixtures, not claims about public
+documents. Start with a new output directory and create both manifests:
 
 ```sh
-spine build orientation-base.yaml --observed-at 2026-09-12T00:00:00Z --out tmp/base.json
+mkdir -p tmp/manifests tmp/editions
+
+cat > tmp/manifests/orientation-base.yaml <<'YAML'
+adapter: provisional_git_manifest_v0
+artifacts:
+  - repo: public-example
+    path: docs/obsolete-handoff.md
+    reported_status: candidate
+    status_source_ref: "synthetic:Status"
+    witness_ref: null
+    status_quote: "Candidate; not accepted."
+  - repo: public-example
+    path: docs/neighbor-constraint.md
+    reported_status: candidate
+    status_source_ref: "synthetic:Status"
+    witness_ref: null
+    status_quote: "Candidate constraint; not accepted."
+YAML
+
+cat > tmp/manifests/orientation-target.yaml <<'YAML'
+adapter: provisional_git_manifest_v0
+artifacts:
+  - repo: public-example
+    path: docs/obsolete-handoff.md
+    reported_status: candidate
+    status_source_ref: "synthetic:Status"
+    witness_ref: null
+    status_quote: "Candidate; source says superseded by a later handoff."
+  - repo: public-example
+    path: docs/neighbor-constraint.md
+    reported_status: candidate
+    status_source_ref: "synthetic:Status"
+    witness_ref: null
+    status_quote: "Candidate constraint; not accepted."
+  - repo: public-example
+    path: docs/source-change.md
+    reported_status: candidate
+    status_source_ref: "synthetic:Status"
+    witness_ref: null
+    status_quote: "Candidate source change; not accepted."
+YAML
+```
+
+Build and render the base manifest, then freeze and compare the two fixed
+synthetic editions:
+
+```sh
+spine build tmp/manifests/orientation-base.yaml --observed-at 2026-09-12T00:00:00Z --out tmp/base.json
 spine render tmp/base.json --out tmp/base.md
-spine edition create orientation-base.yaml --created-at 2026-09-12T00:00:00Z --out tmp/editions
-spine edition create orientation-target.yaml --created-at 2026-09-12T00:01:00Z --out tmp/editions
-spine edition compare tmp/editions/<base-id> tmp/editions/<target-id> --out tmp/drift.md
+spine edition create tmp/manifests/orientation-base.yaml --created-at 2026-09-12T00:00:00Z --out tmp/editions
+spine edition create tmp/manifests/orientation-target.yaml --created-at 2026-09-12T00:01:00Z --out tmp/editions
+spine edition compare \
+  tmp/editions/577ab42cad5bb439d5bb950a5d2252b304b692efe046845027c76be7392650cd \
+  tmp/editions/7be89b68b38d0dd7ad92a236ce73b8bd24305969837c84b2f4f8cc173649c95d \
+  --out tmp/drift.md
 ```
 
 Declare an obsolete handoff, a source-side supersession statement, a neighboring
